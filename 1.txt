@@ -1,0 +1,55 @@
+To build a Java Project using Jenkins with parameters to perform some  mathematical operations
+
+// MathOperations.java
+public class MathOperations {
+    public static void main(String[] args) {
+        // Check if the correct number of arguments is provided
+        if (args.length != 3) {
+            System.out.println("Usage: java MathOperations <num1> <num2> <operation>");
+            return;
+        }
+
+        // Parse the input arguments
+        double num1 = Double.parseDouble(args[0]);
+        double num2 = Double.parseDouble(args[1]);
+        String operation = args[2].toUpperCase();
+
+        // Perform the specified operation
+        switch (operation) {
+            case "ADD":
+                System.out.println("Result: " + (num1 + num2));
+                break;
+            case "SUBTRACT":
+                System.out.println("Result: " + (num1 - num2));
+                break;
+            case "MULTIPLY":
+                System.out.println("Result: " + (num1 * num2));
+                break;
+            case "DIVIDE":
+                if (num2 != 0) {
+                    System.out.println("Result: " + (num1 / num2));
+                } else {
+                    System.out.println("Error: Division by zero");
+                }
+                break;
+            default:
+                System.out.println("Error: Invalid operation");
+                break;
+        }
+    }
+} 
+java -cp target\your-java-project.jar MathOperations %NUM1% %NUM2% %OPERATION%
+Make sure to replace your-java-project.jar with the actual name of your JAR file.
+
+
+Step 6: Save and Run the Job
+
+Click Save to save your job configuration.
+To run the job, click Build with Parameters in the left sidebar.
+Enter the values for NUM1, NUM2, and select the OPERATION you want to perform.
+Click Build.
+
+Step 7: Viewing the Output
+
+After the job runs, click on the build number in the Build History.
+Click on Console Output to see the results of your mathematical operation.
